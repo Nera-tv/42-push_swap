@@ -97,8 +97,7 @@ The function is written in C language and thus needs the  **`gcc`  compiler**  a
 **Cloning the repositories**
 
 ```shell
-git clone https://github.com/Neress-dono/Tronc-Commun_42.git 
-cd Tronc-Commun_42/push_swap
+git clone https://github.com/Nera-tv/push_swap.git push_swap
 make
 ```
 
