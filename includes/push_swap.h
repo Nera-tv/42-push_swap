@@ -6,7 +6,7 @@
 /*   By: dvilard <dvilard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 15:20:02 by dvilard           #+#    #+#             */
-/*   Updated: 2022/03/21 17:40:09 by dvilard          ###   ########.fr       */
+/*   Updated: 2022/04/11 12:11:49 by dvilard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include <stdio.h>
 # include "../libft/libft.h"
 
 # define INT_MAX 2147483647
@@ -72,6 +71,5 @@ void	sort_two(t_data *data);
 void	sort_three(t_data *data);
 void	sort_five_or_less(t_data *data);
 void	indexing_a(t_data *data);
-void	print_stacks(t_data *data);
 
 #endif
