@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dvilard <dvilard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dvilard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 10:28:22 by dvilard           #+#    #+#             */
-/*   Updated: 2022/02/28 14:51:04 by dvilard          ###   ########.fr       */
+/*   Updated: 2021/11/16 15:18:05 by dvilard          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ int	ft_check_long(long n, int s, const char *str, int i)
 	return (1);
 }
 
-long	ft_atoi(const char *nptr)
+int	ft_atoi(const char *nptr)
 {
 	int		i;
 	long	val;
-	long	sign;
+	int		sign;
 
 	i = 0;
 	val = 0;
@@ -56,5 +56,5 @@ long	ft_atoi(const char *nptr)
 			return (-1);
 		val = (val * 10) + (nptr[i++] - 48);
 	}
-	return ((long )val * sign);
+	return ((int )val * sign);
 }

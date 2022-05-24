@@ -6,7 +6,7 @@
 /*   By: dvilard <dvilard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 15:06:50 by dvilard           #+#    #+#             */
-/*   Updated: 2022/02/28 16:13:08 by dvilard          ###   ########.fr       */
+/*   Updated: 2022/05/02 15:23:50 by dvilard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	init_stacks(t_data *data, int size, char **str)
 	while (i < size)
 	{
 		nbr = ft_atoi(str[(i + 1)]);
-		if (nbr < INT_MAX && nbr > INT_MIN)
+		if (nbr <= INT_MAX && nbr >= INT_MIN)
 			data->a[i] = nbr;
 		else
 			error(data);

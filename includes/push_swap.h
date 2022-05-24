@@ -6,7 +6,7 @@
 /*   By: dvilard <dvilard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 15:20:02 by dvilard           #+#    #+#             */
-/*   Updated: 2022/04/11 12:11:49 by dvilard          ###   ########.fr       */
+/*   Updated: 2022/05/24 17:24:49 by dvilard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,6 @@ void	sort_two(t_data *data);
 void	sort_three(t_data *data);
 void	sort_five_or_less(t_data *data);
 void	indexing_a(t_data *data);
+void	radix(t_data *data);
 
 #endif
