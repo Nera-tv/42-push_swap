@@ -39,9 +39,11 @@ OBJS		:=	$(addprefix ${P_OBJS},${LST_OBJS})
 CC			:=	gcc
 CFLAGS		:=	-Wall -Wextra -Werror
 NAME		:= 	push_swap
-HEADER		:=	${P_INC}push_swap.h ${P_LFT}libft.h
+HEADER		:=	${P_INC}push_swap.h 			\
+				${P_LFT}libft.h
 RM			:=	rm -rf
 LFTA		:=	${P_LFT}libft.a
+USAGE		=	$(BLUE)$(BOLD)Usage : ./${NAME} <stack_to_sort> $(RESET)\n
 
 #///////////////////////////////////////////////////////////////////////////////
 
@@ -76,7 +78,19 @@ GRY 		=	\033[0;90m
 RST 		=	\033[0m
 #///////////////////////////////////////////////////////////////////////////////
 
-all: print_header makelft ${NAME} print_bottom
+all: print_header makelft ${NAME} usage print_bottom
+
+${NAME} : ${P_OBJS} ${OBJS} ${HEADER} ${LFTA}
+	@${CC} ${CFLAGS} ${LFTA} ${OBJS} -o $(NAME)
+	@printf "\n$(GREEN)$(BOLD)Binary $(NAME) created$(RESET)	✅\n"
+
+$(P_OBJS)%.o: $(P_SRCS)%.c $(HEADER) $(LFTA) Makefile | $(P_OBJS)
+	@${CC} ${CFLAGS} -c $< -o $@
+	@printf "$(FAINT)$(CC) $(CFLAGS) -c -o $(RESET)$(CYAN)$(BOLD)$@$(RESET) $(FAINT)$(BLUE)$<$(RESET)\n"
+
+$(P_OBJS):
+	@mkdir -p $(P_OBJS)
+	@printf "$(GREEN)$(BOLD)${NAME} objects directories created$(RESET)	✅\n\n"
 
 print_header:
 	@echo "${GRY}====================================================================${RST}\n"
@@ -87,19 +101,10 @@ print_header:
 	@echo "█    ▄▄▄█       █▄▄▄▄▄  █   ▄   █  █▄▄▄▄▄  █       █       █    ▄▄▄█"
 	@echo "█   █   █       █▄▄▄▄▄█ █  █ █  █   ▄▄▄▄▄█ █   ▄   █   ▄   █   █    "
 	@echo "█▄▄▄█   █▄▄▄▄▄▄▄█▄▄▄▄▄▄▄█▄▄█ █▄▄█  █▄▄▄▄▄▄▄█▄▄█ █▄▄█▄▄█ █▄▄█▄▄▄█    "
-	@echo "${GRY}====================================================================${RST}\n"
+	@echo "\n${GRY}====================================================================${RST}\n"
 
-${NAME} : ${P_OBJS} ${OBJS} ${HEADER} ${LFTA}
-	@${CC} ${CFLAGS} ${LFTA} ${OBJS} -o $(NAME)
-	@printf "\n$(GREEN)$(BOLD)Binary $(NAME) created$(RESET)	✅\n"
-
-$(P_OBJS)%.o: $(P_SRCS)%.c $(HEADER) $(LFTA) Makefile | $(P_OBJS)
-	@${CC} ${CFLAGS} -I includes/ -c $< -o $@
-	@printf "$(FAINT)$(CC) $(CFLAGS) -c -o $(RESET)$(CYAN)$(BOLD)$@$(RESET) $(FAINT)$(BLUE)$<$(RESET)\n"
-
-$(P_OBJS):
-	@mkdir -p $(P_OBJS)
-	@printf "$(GREEN)$(BOLD)${NAME} objects directories created$(RESET)	✅\n\n"
+usage:
+	@printf "$(USAGE)"
 
 print_bottom:
 	@echo "\n${GRY}=================================================${RST}\n"
@@ -123,12 +128,12 @@ clean :
 	@printf "$(YELLOW)$(BOLD)All ${NAME} object files removed$(RESET)\n"
 	@printf "$(YELLOW)$(BOLD)All ${NAME} object folders removed$(RESET)\n"
 
-fclean :	
+fclean :
 	@${MAKE}	clean
 	@${RM} ${NAME} 
 	@$(MAKE) fclean -C ${P_LFT}
 	@printf "$(RED)$(BOLD)Binary $(NAME) removed $(RESET)\n"
 
-re :		
+re :
 	@${MAKE} fclean
 	@${MAKE} all
